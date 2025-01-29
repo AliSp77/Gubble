@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Village"
+config/name="Gubble"
 run/main_scene="res://Assets/Scenes/Areas/area_1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
