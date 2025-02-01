@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://booupk6p2l8ge"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/ball_rigid.gd" id="1_5buko"]
+[ext_resource type="Texture2D" uid="uid://daat1o1xgqs7f" path="res://icon.svg" id="1_ju13e"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nco70"]
+rough = true
+bounce = 0.3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cejmf"]
+radius = 19.0
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_nco70")
+script = ExtResource("1_5buko")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_ju13e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cejmf")
