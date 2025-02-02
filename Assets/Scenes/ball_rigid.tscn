@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://daat1o1xgqs7f" path="res://icon.svg" id="1_ju13e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nco70"]
-rough = true
 bounce = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cejmf"]
@@ -25,7 +24,7 @@ texture = ExtResource("1_ju13e")
 shape = SubResource("CircleShape2D_cejmf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
 
 [node name="ground" type="RayCast2D" parent="."]
 position = Vector2(0, 16)
