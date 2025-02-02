@@ -5,7 +5,7 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nco70"]
 rough = true
-bounce = 0.1
+bounce = 0.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cejmf"]
 radius = 19.0
@@ -14,7 +14,7 @@ radius = 19.0
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_nco70")
 contact_monitor = true
-max_contacts_reported = 5
+max_contacts_reported = 1
 script = ExtResource("1_5buko")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

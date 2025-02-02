@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@export_category("Main Category")
+
+@export_group("My Properties")
 @export var acceleration := 400.0
 @export var max_speed := 200.0
 @export var deceleration := 300.0
