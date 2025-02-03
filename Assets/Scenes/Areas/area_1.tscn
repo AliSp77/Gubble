@@ -340,6 +340,6 @@ tile_map_data = PackedByteArray("AAAxAAgAAAACAAYAAAAxAAcAAAACAAUAAAAxAAYAAAAEAAQ
 tile_set = SubResource("TileSet_yceo0")
 
 [node name="RigidBody2D" parent="." instance=ExtResource("3_iko4f")]
-position = Vector2(-70, -19)
+position = Vector2(3042, -63)
 linear_damp = 2.0
 angular_damp = 2.0
