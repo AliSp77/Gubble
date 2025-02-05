@@ -49,6 +49,15 @@ jump={
 2d_physics/layer_2="world"
 2d_physics/layer_3="enemy"
 
+[physics]
+
+2d/physics_engine="Rapier2D"
+rapier/solver/num_additional_friction_iterations=3
+rapier/solver/num_iterations=8
+rapier/solver/max_ccd_substeps=2
+rapier/solver/normalized_prediction_distance=0.004
+rapier/logic/ghost_collision_distance_2d=1.0
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

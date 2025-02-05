@@ -1,60 +1,55 @@
 [gd_scene load_steps=9 format=3 uid="uid://booupk6p2l8ge"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/ball_rigid_state.gd" id="1_5juh1"]
-[ext_resource type="Texture2D" uid="uid://daat1o1xgqs7f" path="res://icon.svg" id="1_ju13e"]
+[ext_resource type="Texture2D" uid="uid://bhmohay1422dg" path="res://Assets/Sprites/rainbowballs.png" id="2_cgcx7"]
 [ext_resource type="Script" path="res://Assets/Scripts/States/rigid_ball/state_machine.gd" id="3_b7wwo"]
 [ext_resource type="Script" path="res://Assets/Scenes/idle.gd" id="4_ag31e"]
 [ext_resource type="Script" path="res://Assets/Scenes/walk.gd" id="5_s4a2p"]
 [ext_resource type="Script" path="res://Assets/Scenes/jump.gd" id="6_vm5yf"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nco70"]
-friction = 0.32
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ehq04"]
 rough = true
-bounce = 0.1
+bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cejmf"]
-radius = 19.0
+radius = 10.0499
 
 [node name="RigidBody2D" type="RigidBody2D"]
-collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_nco70")
+disable_mode = 2
+collision_layer = 0
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_ehq04")
 can_sleep = false
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_5juh1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_ju13e")
+texture = ExtResource("2_cgcx7")
+region_enabled = true
+region_rect = Rect2(2, 1, 10, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cejmf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(6, 6)
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
 
-[node name="ground" type="RayCast2D" parent="."]
-position = Vector2(0, 16)
-target_position = Vector2(0, 8)
-collision_mask = 6
-collide_with_areas = true
-
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_b7wwo")
+starting_state = NodePath("idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("walk", "jump")]
+[node name="idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_ag31e")
-walk = NodePath("../walk")
-jump = NodePath("../jump")
 
-[node name="walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle", "jump")]
+[node name="walk" type="Node" parent="StateMachine"]
 script = ExtResource("5_s4a2p")
-idle = NodePath("../Idle")
-jump = NodePath("../jump")
+move_force = Vector2(600, 0)
+move_torque = 300
 
-[node name="jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle", "walk")]
+[node name="jump" type="Node" parent="StateMachine"]
 script = ExtResource("6_vm5yf")
-idle = NodePath("../Idle")
-walk = NodePath("../walk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

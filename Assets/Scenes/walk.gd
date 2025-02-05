@@ -1,15 +1,10 @@
 extends RigidState
 class_name RigidWalk
 
-@export
-var idle: RigidState
-@export
-var jump: RigidState
-
 @export_category("Movement Setup")
 @export_group("Forces And Torques")
-@onready var move_force = Vector2(2500, 0)
-@onready var move_torque = 1500
+@export var move_force = Vector2(250, 0)
+@export var move_torque = 150
  
 func enter():
 	var direction := Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -17,10 +12,10 @@ func enter():
 
 func process_physics(delta: float) -> RigidState:
 	if abs(parent.linear_velocity.x) <= 1:
-		ChangeState.emit(idle)
+		ChangeState.emit(States["idle"])
 		
 	if Input.is_action_just_pressed("jump") and not check_airborne():
-		ChangeState.emit(jump)
+		ChangeState.emit(States["jump"])
 		pass
 	
 	var direction := Input.get_action_strength("right") - Input.get_action_strength("left")

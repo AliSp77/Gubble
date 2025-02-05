@@ -5,7 +5,6 @@ class_name StateMachine
 var starting_state: RigidState
 
 var current_state: RigidState
-var States: Array[RigidState]
 
 # Initialize the state machine by giving each child state a reference to the
 # parent object it belongs to and enter the default starting_state.
@@ -13,18 +12,18 @@ func init(parent: RigidBody2D) -> void:
 	for child in get_children():
 		child.parent = parent
 		child.ChangeState.connect(change_state)
-		States.append(child)
+		child.States[child.name] = child
 
 	# Initialize to the default state
 	if starting_state:
 		current_state = starting_state
 	else:
-		current_state = States[0]
+		get_child(0)	
+	print(current_state.States, "state states")
 
 # Change to the new state by first calling any exit logic on the current state.
 func change_state(new_state: RigidState) -> void:
-	print(current_state)
-	print(new_state)
+	print("from: ",current_state.name, ", to: ", new_state.name)
 	
 	if current_state == new_state:
 		return

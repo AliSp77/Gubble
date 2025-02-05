@@ -1,21 +1,17 @@
 extends RigidState
 class_name RigidIdle
 
-@export
-var walk: RigidState
-@export
-var jump: RigidState
-
 func enter():
 	parent.linear_velocity.x = 0
+	print(States)
 	
 func process_physics(delta: float) -> RigidState:
 	var direction := Input.get_action_strength("right") - Input.get_action_strength("left")
 	if direction != 0:
-		ChangeState.emit(walk)
+		ChangeState.emit(States["walk"])
 	
 	if Input.is_action_just_pressed("jump") and not check_airborne():
-		ChangeState.emit(jump)
+		ChangeState.emit(States["jump"])
 		pass
 	
 	return null
