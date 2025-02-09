@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://dqor3swdcidxu"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/player_controller.gd" id="1_f7mkj"]
-[ext_resource type="Texture2D" uid="uid://d2twas6sbh6jg" path="res://Assets/Sprites/player.png" id="1_xbe7b"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/Player/player_state_machine.gd" id="4_mlykm"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/Player/jump.gd" id="5_1hx45"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/Player/walk.gd" id="5_epiao"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/Player/idle.gd" id="5_ln6yc"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/Player/fall.gd" id="6_jo5ju"]
+[ext_resource type="Script" path="res://Assets/Scripts/player_controller.gd" id="1_bmq6t"]
+[ext_resource type="Texture2D" uid="uid://d2twas6sbh6jg" path="res://Assets/Sprites/player.png" id="2_md08r"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/Player/player_state_machine.gd" id="3_heoeq"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/Player/idle.gd" id="4_o4dyc"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/Player/walk.gd" id="5_6cu52"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/Player/jump.gd" id="6_38xb1"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/Player/fall.gd" id="7_uajbr"]
 
 [sub_resource type="Animation" id="Animation_i08xe"]
 length = 0.001
@@ -108,7 +108,7 @@ height = 14.0
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -8)
 collision_mask = 2
-script = ExtResource("1_f7mkj")
+script = ExtResource("1_bmq6t")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -15)
@@ -125,7 +125,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator"]
-texture = ExtResource("1_xbe7b")
+texture = ExtResource("2_md08r")
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
@@ -135,18 +135,18 @@ position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_xqotm")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
-script = ExtResource("4_mlykm")
+script = ExtResource("3_heoeq")
 starting_state = NodePath("idle")
 
 [node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "jump_state", "move_state")]
-script = ExtResource("5_ln6yc")
+script = ExtResource("4_o4dyc")
 fall_state = NodePath("../fall")
 jump_state = NodePath("../jump")
 move_state = NodePath("../walk")
 animation_name = "idle"
 
 [node name="walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "jump_state")]
-script = ExtResource("5_epiao")
+script = ExtResource("5_6cu52")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 jump_state = NodePath("../jump")
@@ -154,7 +154,7 @@ animation_name = "walk"
 move_speed = 50.0
 
 [node name="jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "move_state")]
-script = ExtResource("5_1hx45")
+script = ExtResource("6_38xb1")
 fall_state = NodePath("../fall")
 idle_state = NodePath("../idle")
 move_state = NodePath("../walk")
@@ -162,7 +162,7 @@ jump_force = 300.0
 animation_name = "jump"
 
 [node name="fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "move_state")]
-script = ExtResource("6_jo5ju")
+script = ExtResource("7_uajbr")
 idle_state = NodePath("../idle")
 move_state = NodePath("../walk")
 animation_name = "fall"

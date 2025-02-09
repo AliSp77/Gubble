@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://hbbfrd2uq3ru"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/player_ball.gd" id="1_2l1lp"]
+[ext_resource type="Texture2D" uid="uid://bhmohay1422dg" path="res://Assets/Sprites/rainbowballs.png" id="1_4s0mv"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/state_machine.gd" id="2_6c41g"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/idle.gd" id="3_jxwwc"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/walk.gd" id="4_i4u2q"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/jump.gd" id="5_qnht2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6symj"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xbjsi"]
+radius = 4.0
+
+[node name="PlayerBall" type="RigidBody2D"]
+collision_mask = 2
+script = ExtResource("1_2l1lp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4s0mv")
+region_enabled = true
+region_rect = Rect2(11, 1, 10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6symj")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("2_6c41g")
+starting_state = NodePath("idle")
+
+[node name="idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_jxwwc")
+animation_name = null
+move_speed = null
+
+[node name="walk" type="Node" parent="StateMachine"]
+script = ExtResource("4_i4u2q")
+move_force = null
+move_torque = null
+animation_name = null
+move_speed = null
+
+[node name="jump" type="Node" parent="StateMachine"]
+script = ExtResource("5_qnht2")
+airborne_force = null
+jump_force = null
+animation_name = null
+move_speed = null
+
+[node name="GroundDetection" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_xbjsi")
+target_position = Vector2(0, 0)
+collision_mask = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6, 6)

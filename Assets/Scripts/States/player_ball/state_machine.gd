@@ -5,6 +5,7 @@ class_name StateMachine
 var starting_state: RigidState
 
 var current_state: RigidState
+@onready var ground_detection: ShapeCast2D = $"../GroundDetection"
 
 # Initialize the state machine by giving each child state a reference to the
 # parent object it belongs to and enter the default starting_state.
@@ -13,13 +14,13 @@ func init(parent: RigidBody2D) -> void:
 		child.parent = parent
 		child.ChangeState.connect(change_state)
 		child.States[child.name] = child
+		child.ground_detection = ground_detection
 
 	# Initialize to the default state
 	if starting_state:
 		current_state = starting_state
 	else:
 		get_child(0)	
-	print(current_state.States, "state states")
 
 # Change to the new state by first calling any exit logic on the current state.
 func change_state(new_state: RigidState) -> void:

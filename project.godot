@@ -51,7 +51,6 @@ jump={
 
 [physics]
 
-2d/physics_engine="Rapier2D"
 rapier/solver/num_additional_friction_iterations=3
 rapier/solver/num_iterations=8
 rapier/solver/max_ccd_substeps=2
