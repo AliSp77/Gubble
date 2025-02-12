@@ -29,9 +29,10 @@ func process_physics(delta: float) -> RigidState:
 	if Input.is_action_pressed("down") and !parent.stunned:
 		ChangeState.emit(States["transition"])
 		return null
-
-	var direction := Input.get_action_strength("right") - Input.get_action_strength("left")
-	parent.apply_central_force(move_force * direction)
+	
+	if parent.linear_velocity.y < 200: 
+		var direction := Input.get_action_strength("right") - Input.get_action_strength("left")
+		parent.apply_central_force(move_force * direction)
 	return null
 
 #func process_input(event):
