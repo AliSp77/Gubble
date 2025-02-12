@@ -16,6 +16,8 @@ extends RigidBody2D
 #@onready var max_move_speed = 300
 @onready var state_machine: StateMachine = $StateMachine
 #@onready var shape_cast_2d: ShapeCast2D = $ShapeCast2D
+@onready var animations: AnimationPlayer = $AnimationPlayer
+var stunned: bool = false
 
 func _ready():
 	state_machine.init(self)

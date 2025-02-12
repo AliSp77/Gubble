@@ -36,14 +36,14 @@ func _physics_process(delta):
 		velocity.y = jump_velocity
 		jumping = true  # Track that we are now in the air
 	
-	if jumping and velocity.y == 0:
-		jumping = false
-		bouncing = true
-
-# Detect landing (was falling, now on the floor)
-	if bouncing and is_on_floor():
-		velocity.y = bounce_intensity  # Apply small bounce
-		bouncing = false  # Reset tracking
+	#if jumping and velocity.y == 0:
+		#jumping = false
+		#bouncing = true
+#
+## Detect landing (was falling, now on the floor)
+	#if bouncing and is_on_floor():
+		#velocity.y = bounce_intensity  # Apply small bounce
+		#bouncing = false  # Reset tracking
 	
 	# Apply velocity and move
 	velocity.x = velocity_x

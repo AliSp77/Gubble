@@ -1,32 +1,111 @@
-[gd_scene load_steps=10 format=3 uid="uid://hbbfrd2uq3ru"]
+[gd_scene load_steps=19 format=3 uid="uid://hbbfrd2uq3ru"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/player_ball.gd" id="1_2l1lp"]
-[ext_resource type="Texture2D" uid="uid://bhmohay1422dg" path="res://Assets/Sprites/rainbowballs.png" id="1_4s0mv"]
 [ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/state_machine.gd" id="2_6c41g"]
+[ext_resource type="Texture2D" uid="uid://bka5ofrl2kifx" path="res://Assets/Sprites/ball.png" id="2_jbe77"]
 [ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/idle.gd" id="3_jxwwc"]
 [ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/walk.gd" id="4_i4u2q"]
 [ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/jump.gd" id="5_qnht2"]
+[ext_resource type="Script" path="res://Assets/Scenes/Character/fall.gd" id="7_x6o56"]
+[ext_resource type="Script" path="res://Assets/Scenes/Character/slam.gd" id="8_3inho"]
+[ext_resource type="Script" path="res://Assets/Scenes/Character/transition.gd" id="9_1ctkp"]
+[ext_resource type="Script" path="res://Assets/Scenes/Character/pid.gd" id="10_144ux"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jp5n4"]
 bounce = 0.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6symj"]
-radius = 4.0
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xbjsi"]
-radius = 4.0
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_6hmtx"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_swhd1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_dpmrg"]
+resource_name = "jump"
+length = 0.3
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 7, 8, 0]
+}
+
+[sub_resource type="Animation" id="Animation_tsvdm"]
+resource_name = "roll"
+loop_mode = 2
+step = 0.0333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8b5ek"]
+_data = {
+"RESET": SubResource("Animation_swhd1"),
+"idle": SubResource("Animation_6hmtx"),
+"jump": SubResource("Animation_dpmrg"),
+"roll": SubResource("Animation_tsvdm")
+}
 
 [node name="PlayerBall" type="RigidBody2D"]
-collision_mask = 2
+collision_mask = 10
 physics_material_override = SubResource("PhysicsMaterial_jp5n4")
 script = ExtResource("1_2l1lp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_4s0mv")
-region_enabled = true
+texture = ExtResource("2_jbe77")
+hframes = 9
 region_rect = Rect2(11, 1, 10, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_6symj")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
@@ -35,17 +114,45 @@ starting_state = NodePath("idle")
 
 [node name="idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_jxwwc")
+animation_name = "idle"
 
 [node name="walk" type="Node" parent="StateMachine"]
 script = ExtResource("4_i4u2q")
+animation_name = "roll"
 
 [node name="jump" type="Node" parent="StateMachine"]
 script = ExtResource("5_qnht2")
+animation_name = "jump"
+
+[node name="fall" type="Node" parent="StateMachine"]
+script = ExtResource("7_x6o56")
+
+[node name="slam" type="Node" parent="StateMachine"]
+script = ExtResource("8_3inho")
+
+[node name="transition" type="Node" parent="StateMachine"]
+script = ExtResource("9_1ctkp")
 
 [node name="GroundDetection" type="ShapeCast2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_xbjsi")
 target_position = Vector2(0, 0)
-collision_mask = 2
+collision_mask = 8
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(6, 6)
+offset = Vector2(90, 0)
+zoom = Vector2(4, 4)
+limit_top = 0
+limit_bottom = 192
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8b5ek")
+}
+autoplay = "idle"
+
+[node name="PID" type="Node" parent="."]
+script = ExtResource("10_144ux")

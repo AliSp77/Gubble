@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://pb5aaxq68b4b"]
+
+[ext_resource type="Texture2D" uid="uid://cyi3aioa63wwk" path="res://Assets/Sprites/roads2.png" id="1_wws2m"]
+[ext_resource type="PackedScene" uid="uid://hbbfrd2uq3ru" path="res://Assets/Scenes/Character/player_ball.tscn" id="2_6ky4c"]
+[ext_resource type="Script" path="res://TileMapColliderGenerator-05ffa8eceb724194f2dda2331b8e1cd817581ada/generator.gd" id="3_np1w6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sq5nb"]
+texture = ExtResource("1_wws2m")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, 0, -8, 0, -8, 8)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0, 8, -8, -8, 0, -8, 8)
+1:0/0/physics_layer_0/polygon_0/one_way = true
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 0, 8, -8, -8, -8, -8, 0)
+2:0/0/physics_layer_0/polygon_0/one_way = true
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, 0, -8, -8, -8, 0)
+3:0/0/physics_layer_0/polygon_0/one_way = true
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, 0, 8, 8)
+4:0/0/physics_layer_0/polygon_0/one_way = true
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 8, 8, 0, -8, 8)
+5:0/0/physics_layer_0/polygon_0/one_way = true
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 0, -8, -8)
+4:1/0/physics_layer_0/polygon_0/one_way = true
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 0, 8, -8)
+5:1/0/physics_layer_0/polygon_0/one_way = true
+
+[sub_resource type="TileSet" id="TileSet_13hsj"]
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_sq5nb")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_f8n87"]
+distance = -22.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_v461o"]
+distance = -186.0
+
+[node name="GymTestMap" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_13hsj")
+format = 2
+layer_0/tile_data = PackedInt32Array(196608, 0, 0, 458752, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 720916, 0, 0, 720917, 0, 0, 720918, 0, 0, 720919, 0, 0, 720920, 0, 0, 720921, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 458772, 0, 0, 458773, 0, 0, 458774, 0, 0, 458775, 0, 0, 458776, 0, 0, 458777, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 196630, 0, 0, 196631, 0, 0, 196632, 0, 0, 196633, 0, 0, -65536, 131072, 0, -65535, 131072, 0, -65534, 131072, 0, -65533, 131072, 0, -65532, 131072, 0, -65531, 131072, 0, -65530, 131072, 0, -65529, 131072, 0, -65528, 131072, 0, -65527, 131072, 0, -65526, 131072, 0, -65525, 131072, 0, -65524, 131072, 0, -65523, 131072, 0, -65522, 131072, 0, -65521, 131072, 0, -65520, 131072, 0, -65519, 131072, 0, -65518, 131072, 0, -65517, 131072, 0, -65516, 131072, 0, -65515, 131072, 0, -65514, 131072, 0, -65513, 131072, 0, -65512, 131072, 0, -65511, 131072, 0, 720922, 65536, 0, 655388, 65536, 0, 655389, 131072, 0, 655390, 131072, 0, 655391, 131072, 0, 655392, 131072, 0, 655396, 131072, 0, 655397, 131072, 0, 655398, 131072, 0, 655399, 131072, 0, 655400, 131072, 0, 655401, 131072, 0, 786474, 0, 0, 786475, 0, 0, 786476, 0, 0, 786480, 0, 0, 786479, 0, 0, 786478, 0, 0, 786477, 0, 0, 458778, 262144, 0, 524314, 262144, 1, 524315, 196608, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 524327, 0, 0, 524328, 0, 0, 524329, 0, 0, 196634, 0, 0, 196635, 0, 0, 196636, 0, 0, 196637, 0, 0, 196638, 0, 0, 196639, 0, 0, 196640, 0, 0, 196641, 0, 0, 196647, 0, 0, 196648, 0, 0, 196649, 0, 0, 196642, 0, 0, 131106, 0, 0, 65570, 0, 0, 34, 0, 0, -65502, 131072, 0, -65510, 131072, 0, -65509, 131072, 0, -65508, 131072, 0, -65507, 131072, 0, -65506, 131072, 0, -65505, 131072, 0, -65504, 131072, 0, -65503, 131072, 0, -65501, 131072, 0, -65500, 131072, 0, -65499, 131072, 0, -65498, 131072, 0, -65497, 131072, 0, -65496, 131072, 0, -65495, 131072, 0, -65494, 131072, 0, -65493, 131072, 0, -65492, 131072, 0, 131111, 0, 0, 65575, 0, 0, 39, 0, 0, 655387, 327680, 0, 720923, 327680, 1)
+
+[node name="PlayerBall" parent="." instance=ExtResource("2_6ky4c")]
+position = Vector2(24, 168)
+
+[node name="world boundires" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="world bound 1" type="CollisionShape2D" parent="world boundires"]
+position = Vector2(1, 12)
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_f8n87")
+
+[node name="world bound 2" type="CollisionShape2D" parent="world boundires"]
+shape = SubResource("WorldBoundaryShape2D_v461o")
+
+[node name="TileMapCollisionGenerator" type="StaticBody2D" parent="."]
+collision_layer = 8
+script = ExtResource("3_np1w6")
+tilemap_node_path = NodePath("../TileMap")
+
+[node name="TMCG-CollisionPolygon2D-0" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(560, 56, 560, 64, 0, 64, 0, 56)
+one_way_collision = true
+
+[node name="TMCG-CollisionPolygon2D-1" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(448, 136, 672, 136, 672, 144, 448, 144, 416, 128, 0, 128, 0, 120, 416, 120)
+one_way_collision = true
+
+[node name="TMCG-CollisionPolygon2D-2" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(416, 192, 0, 192, 0, 184, 416, 184, 464, 160, 528, 160, 528, 168, 464, 168)
+one_way_collision = true
+
+[node name="TMCG-CollisionPolygon2D-3" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(720, -16, 720, -8, 0, -8, 0, -16)
+one_way_collision = true
+
+[node name="TMCG-CollisionPolygon2D-4" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(672, 160, 672, 168, 576, 168, 576, 160)
+one_way_collision = true
+
+[node name="TMCG-CollisionPolygon2D-5" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(784, 200, 784, 208, 672, 208, 672, 200)
+one_way_collision = true
+
+[node name="TMCG-CollisionPolygon2D-6" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(672, 56, 672, 64, 624, 64, 624, 56)
+one_way_collision = true
+
+[node name="TMCG-CollisionPolygon2D-7" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(560, 48, 560, 40, 544, 40, 544, 48)
+one_way_collision = true
+
+[node name="TMCG-CollisionPolygon2D-8" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(560, 32, 560, 24, 544, 24, 544, 32)
+one_way_collision = true
+
+[node name="TMCG-CollisionPolygon2D-9" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(560, 16, 560, 8, 544, 8, 544, 16)
+one_way_collision = true
+
+[node name="TMCG-CollisionPolygon2D-10" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(640, 48, 640, 40, 624, 40, 624, 48)
+one_way_collision = true
+
+[node name="TMCG-CollisionPolygon2D-11" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(640, 32, 640, 24, 624, 24, 624, 32)
+one_way_collision = true
+
+[node name="TMCG-CollisionPolygon2D-12" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(640, 16, 640, 8, 624, 8, 624, 16)
+one_way_collision = true
