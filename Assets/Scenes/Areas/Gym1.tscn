@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://fivt7kgo4obb"]
+
+[ext_resource type="PackedScene" uid="uid://hbbfrd2uq3ru" path="res://Assets/Scenes/Character/player_ball.tscn" id="1_ea8j3"]
+[ext_resource type="TileSet" uid="uid://hw3whtx1pd5y" path="res://Assets/Scenes/Areas/one_way_ground.tres" id="1_qsgce"]
+[ext_resource type="Script" path="res://TileMapColliderGenerator-05ffa8eceb724194f2dda2331b8e1cd817581ada/generator.gd" id="3_tliwe"]
+
+[node name="Gym1" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMap" parent="."]
+tile_set = ExtResource("1_qsgce")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 131073, 0, 1, 131073, 0, 2, 131073, 0, 3, 131073, 0, 4, 131073, 0, 5, 131073, 0, 6, 131073, 0, 7, 131073, 0, 8, 131073, 0, 9, 131073, 0, 10, 131073, 0, 11, 131073, 0, 12, 131073, 0, 13, 131073, 0, 14, 131073, 0, 15, 131073, 0, -65520, 327681, 0, -65519, 65537, 0, -65518, 131073, 0, -65517, 131073, 0, -65516, 131073, 0, -65515, 131073, 0, -65514, 131073, 0, -65513, 131073, 0, -65512, 131073, 0, -65511, 131073, 0, -65510, 131073, 0, -65509, 131073, 0, -65508, 131073, 0, -65507, 131073, 0, -65506, 131073, 0, -65505, 131073, 0, -65504, 131073, 0, -65503, 131073, 0, -65502, 131073, 0, -131073, 0, 0, -65537, 0, 1, -1, 0, 2, -327681, 0, 0, -262145, 0, 1, -196609, 0, 2, -524289, 0, 0, -458753, 0, 1, -393217, 0, 2, -720897, 0, 0, -655361, 0, 1, -589825, 0, 2, -196573, 0, 0, -131037, 0, 1, -65501, 0, 2, -393181, 0, 0, -327645, 0, 1, -262109, 0, 2, -589789, 0, 0, -524253, 0, 1, -458717, 0, 2, -786397, 0, 0, -720861, 0, 1, -655325, 0, 2, -983005, 0, 0, -917469, 0, 1, -851933, 0, 2, 65536, 65536, 5, 65537, 65536, 5, 65538, 65536, 5, 65539, 65536, 5, 65540, 65536, 5, 65541, 65536, 5, 65542, 65536, 5, 65543, 65536, 5, 65544, 65536, 5, 65545, 65536, 5, 65546, 65536, 5, 65547, 65536, 5, 65548, 65536, 5, 65549, 65536, 5, 65550, 65536, 5, 65551, 65536, 5, 65552, 65536, 5, 65553, 65536, 5, 65554, 65536, 5, 17, 65536, 5, 18, 65536, 5, 19, 65536, 5, 20, 65536, 5, 21, 65536, 5, 22, 65536, 5, 23, 65536, 5, 24, 65536, 5, 25, 65536, 5, 26, 65536, 5, 27, 65536, 5, 28, 65536, 5, 29, 65536, 5, 30, 65536, 5, 31, 65536, 5, 32, 65536, 5, 33, 65536, 5, 34, 65536, 5, 35, 65536, 5, 65571, 65536, 5, 65570, 65536, 5, 65569, 65536, 5, 65568, 65536, 5, 65567, 65536, 5, 65566, 65536, 5, 65565, 65536, 5, 65564, 65536, 5, 65563, 65536, 5, 65562, 65536, 5, 65561, 65536, 5, 65560, 65536, 5, 65559, 65536, 5, 65558, 65536, 5, 65557, 65536, 5, 65556, 65536, 5, 65555, 65536, 5, 16, 65536, 5)
+layer_1/name = "Layer1"
+layer_1/tile_data = PackedInt32Array(-196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 1, 0, -196603, 1, 0, -196602, 1, 0, -196601, 65537, 0, -196600, 131073, 0, -196599, 131073, 0, -196598, 131073, 0, -196597, 131073, 0, -196596, 131073, 0, -196595, 131073, 0, -262130, 327681, 0, -262129, 65537, 0, -327664, 327681, 0, -327663, 65537, 0, -393198, 327681, 0, -393197, 65537, 0, -393196, 131073, 0, -393195, 131073, 0, -393194, 131073, 0, -393193, 131073, 0, -393192, 131073, 0, -393191, 131073, 0, -393190, 131073, 0, -393189, 131073, 0, -393188, 131073, 0, -393187, 131073, 0, -393186, 131073, 0)
+
+[node name="TileMapCollisionGenerator" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("3_tliwe")
+tilemap_node_path = NodePath("../TileMapLayer")
+target_layer = 1
+
+[node name="TMCG-CollisionPolygon2D-0" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(224, -48, 224, -32, 0, -32, 0, -48)
+
+[node name="TMCG-CollisionPolygon2D-1" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(256, -64, 256, -48, 224, -48, 224, -64)
+
+[node name="TMCG-CollisionPolygon2D-2" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(288, -80, 288, -64, 256, -64, 256, -80)
+
+[node name="TMCG-CollisionPolygon2D-3" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
+polygon = PackedVector2Array(496, -96, 496, -80, 288, -80, 288, -96)
+
+[node name="PlayerBall" parent="." instance=ExtResource("1_ea8j3")]
+position = Vector2(74, -15)
+collision_mask = 6

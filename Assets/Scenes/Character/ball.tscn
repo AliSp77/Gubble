@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfs2fa8llv3na"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/ball.gd" id="1_qjygi"]
+[ext_resource type="Texture2D" uid="uid://daat1o1xgqs7f" path="res://icon.svg" id="2_sxbls"]
+[ext_resource type="FontFile" uid="uid://cboapoje3hcce" path="res://Assets/Fonts/Kenney Future.ttf" id="3_1uplh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_midq2"]
+radius = 60.208
+
+[node name="ball" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
+collision_mask = 2
+script = ExtResource("1_qjygi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sxbls")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_midq2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -95.0
+offset_top = -80.0
+offset_right = 100.0
+offset_bottom = -62.0
+theme_override_fonts/font = ExtResource("3_1uplh")
+theme_override_font_sizes/font_size = 16
+text = "The Great Retard"
+horizontal_alignment = 1
+vertical_alignment = 1
