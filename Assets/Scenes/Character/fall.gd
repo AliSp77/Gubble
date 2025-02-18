@@ -25,8 +25,8 @@ func process_physics(_delta):
 
 	if Input.is_action_just_pressed("down"):
 		ChangeState.emit(States["slam"])
-			
-		#if ground_detection.get_collision_count() or parent.linear_velocity.y <= 1:
-	if parent.linear_velocity.y <= 0.2:
+	
+	if ground_detection.get_collision_count() or parent.linear_velocity.y <= 1:
+	#if parent.linear_velocity.y <= 0.2:
 		ChangeState.emit(States["walk"])
 	

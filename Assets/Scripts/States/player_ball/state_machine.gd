@@ -5,7 +5,7 @@ class_name StateMachine
 var starting_state: RigidState
 
 var current_state: RigidState
-@onready var ground_detection: ShapeCast2D = $"../GroundDetection"
+@export var ground_detection: ShapeCast2D
 
 # Initialize the state machine by giving each child state a reference to the
 # parent object it belongs to and enter the default starting_state.
@@ -14,6 +14,7 @@ func init(parent: RigidBody2D) -> void:
 		child.parent = parent
 		child.ChangeState.connect(change_state)
 		child.States[child.name] = child
+		child.ground_detector_state = ground_detection
 
 	# Initialize to the default state
 	if starting_state:
@@ -23,7 +24,7 @@ func init(parent: RigidBody2D) -> void:
 
 # Change to the new state by first calling any exit logic on the current state.
 func change_state(new_state: RigidState) -> void:
-	#print("from: ",current_state.name, ", to: ", new_state.name)
+	print("from: ",current_state.name, ", to: ", new_state.name)
 	
 	if current_state == new_state:
 		return
@@ -43,3 +44,5 @@ func process_input(event: InputEvent) -> void:
 func process_frame(delta: float) -> void:
 	current_state.process_frame(delta)
 	
+func update_force(state: PhysicsDirectBodyState2D) -> void:
+	current_state.update_force(state)

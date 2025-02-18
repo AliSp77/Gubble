@@ -1,23 +1,20 @@
-[gd_scene load_steps=19 format=3 uid="uid://hbbfrd2uq3ru"]
+[gd_scene load_steps=16 format=3 uid="uid://b151whkabrw4a"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/player_ball.gd" id="1_2l1lp"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/state_machine.gd" id="2_6c41g"]
-[ext_resource type="Texture2D" uid="uid://bka5ofrl2kifx" path="res://Assets/Sprites/ball.png" id="2_jbe77"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/idle.gd" id="3_jxwwc"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/walk.gd" id="4_i4u2q"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/jump.gd" id="5_qnht2"]
-[ext_resource type="Script" path="res://Assets/Scenes/Character/fall.gd" id="7_x6o56"]
-[ext_resource type="Script" path="res://Assets/Scenes/Character/slam.gd" id="8_3inho"]
-[ext_resource type="Script" path="res://Assets/Scenes/Character/transition.gd" id="9_1ctkp"]
-[ext_resource type="Script" path="res://Assets/Scenes/Character/pid.gd" id="10_144ux"]
+[ext_resource type="Texture2D" uid="uid://bka5ofrl2kifx" path="res://Assets/Sprites/ball.png" id="1_7v8nq"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/Gubble/gubble_main.gd" id="1_lmwoo"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/state_machine.gd" id="3_g8ajx"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/Gubble/idle.gd" id="4_02tg8"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/Gubble/walk.gd" id="5_mke6s"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/Gubble/jump.gd" id="6_k8fhc"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/Gubble/fall.gd" id="7_eytsm"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jp5n4"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yp7ca"]
 bounce = 0.3
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6symj"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_eqh5i"]
 radius = 6.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xbjsi"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5kxo"]
 radius = 6.0
 
 [sub_resource type="Animation" id="Animation_swhd1"]
@@ -94,47 +91,22 @@ _data = {
 "roll": SubResource("Animation_tsvdm")
 }
 
-[node name="PlayerBall" type="RigidBody2D"]
+[node name="Gubble" type="RigidBody2D"]
 collision_mask = 10
-physics_material_override = SubResource("PhysicsMaterial_jp5n4")
-script = ExtResource("1_2l1lp")
+physics_material_override = SubResource("PhysicsMaterial_yp7ca")
+script = ExtResource("1_lmwoo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_jbe77")
+texture = ExtResource("1_7v8nq")
 hframes = 9
 region_rect = Rect2(11, 1, 10, 10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_6symj")
-
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
-script = ExtResource("2_6c41g")
-starting_state = NodePath("idle")
-
-[node name="idle" type="Node" parent="StateMachine"]
-script = ExtResource("3_jxwwc")
-animation_name = "idle"
-
-[node name="walk" type="Node" parent="StateMachine"]
-script = ExtResource("4_i4u2q")
-animation_name = "roll"
-
-[node name="jump" type="Node" parent="StateMachine"]
-script = ExtResource("5_qnht2")
-animation_name = "jump"
-
-[node name="fall" type="Node" parent="StateMachine"]
-script = ExtResource("7_x6o56")
-
-[node name="slam" type="Node" parent="StateMachine"]
-script = ExtResource("8_3inho")
-
-[node name="transition" type="Node" parent="StateMachine"]
-script = ExtResource("9_1ctkp")
+[node name="Colider" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_eqh5i")
 
 [node name="GroundDetection" type="ShapeCast2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_xbjsi")
+shape = SubResource("CircleShape2D_m5kxo")
 target_position = Vector2(0, 0)
 collision_mask = 8
 
@@ -153,5 +125,19 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="PID" type="Node" parent="."]
-script = ExtResource("10_144ux")
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "ground_detection")]
+script = ExtResource("3_g8ajx")
+starting_state = NodePath("idle")
+ground_detection = NodePath("../GroundDetection")
+
+[node name="idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_02tg8")
+
+[node name="walk" type="Node" parent="StateMachine"]
+script = ExtResource("5_mke6s")
+
+[node name="jump" type="Node" parent="StateMachine"]
+script = ExtResource("6_k8fhc")
+
+[node name="fall" type="Node" parent="StateMachine"]
+script = ExtResource("7_eytsm")

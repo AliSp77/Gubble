@@ -30,5 +30,8 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
+	
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	state_machine.update_force(state)
 
 	
