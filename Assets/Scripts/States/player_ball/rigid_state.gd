@@ -58,4 +58,5 @@ func floor_finder(detector: ShapeCast2D) -> bool:
 			found_floor = true
 			floor_index = x
 		print(ci.dot(Vector2(0, -1)), " test")
+		
 	return found_floor

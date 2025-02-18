@@ -3,6 +3,7 @@ extends RigidBody2D
 @onready var state_machine: StateMachine = $StateMachine
 
 var stunned: bool = false
+var airborne_time: float = 1e20
 
 func _ready():
 	state_machine.init(self)
