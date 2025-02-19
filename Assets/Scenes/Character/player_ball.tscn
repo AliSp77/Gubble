@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://hbbfrd2uq3ru"]
+[gd_scene load_steps=20 format=3 uid="uid://hbbfrd2uq3ru"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/player_ball.gd" id="1_2l1lp"]
 [ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/state_machine.gd" id="2_6c41g"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Assets/Scenes/Character/slam.gd" id="8_3inho"]
 [ext_resource type="Script" path="res://Assets/Scenes/Character/transition.gd" id="9_1ctkp"]
 [ext_resource type="Script" path="res://Assets/Scenes/Character/pid.gd" id="10_144ux"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/Gubble/want_jump.gd" id="10_j3jeg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jp5n4"]
 bounce = 0.3
@@ -131,6 +132,11 @@ script = ExtResource("8_3inho")
 
 [node name="transition" type="Node" parent="StateMachine"]
 script = ExtResource("9_1ctkp")
+
+[node name="want_jump" type="Node" parent="StateMachine"]
+script = ExtResource("10_j3jeg")
+animation_name = null
+move_speed = null
 
 [node name="GroundDetection" type="ShapeCast2D" parent="."]
 visible = false

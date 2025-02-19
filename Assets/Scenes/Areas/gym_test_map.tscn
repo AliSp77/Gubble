@@ -221,4 +221,4 @@ polygon = PackedVector2Array(2880, 120, 2912, 120, 2912, 128, 2880, 128, 2864, 1
 one_way_collision = true
 
 [node name="Gubble" parent="." instance=ExtResource("3_1p051")]
-position = Vector2(356, 135)
+position = Vector2(2213, 85)

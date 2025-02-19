@@ -19,7 +19,8 @@ func process_physics(delta: float):
 func update_force(s: PhysicsDirectBodyState2D):
 	var lv := s.get_linear_velocity()
 	var step := s.get_step()
-	### change state to fall after vertical speed change 
+	### change state to fall after vertical speed change
+	print(lv.y)
 	if lv.y > 0:
 		ChangeState.emit(States["fall"])
 	### Getting character direction

@@ -19,10 +19,14 @@ func enter():
 	print("slaaaaam")
 
 func process_physics(_delta):
-	#if ground_detection.get_collision_count() or parent.linear_velocity.y <= 1:
-	if parent.linear_velocity.y <= 1 :
-		ChangeState.emit(States["walk"]) 
-	pass
+
+	if floor_finder(ground_detector_state) and abs(parent.linear_velocity.y) > 0.5:
+		ChangeState.emit(States["walk"])
+		return null
+	
+	if floor_finder(ground_detector_state) and abs(parent.linear_velocity.y) < 0.5:
+		ChangeState.emit(States["idle"])
+		return null
 
 func exit():
 	parent.physics_material_override.absorbent = false

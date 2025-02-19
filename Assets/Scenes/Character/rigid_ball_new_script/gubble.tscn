@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b151whkabrw4a"]
+[gd_scene load_steps=19 format=3 uid="uid://b151whkabrw4a"]
 
 [ext_resource type="Texture2D" uid="uid://bka5ofrl2kifx" path="res://Assets/Sprites/ball.png" id="1_7v8nq"]
 [ext_resource type="Script" path="res://Assets/Scripts/States/Gubble/gubble_main.gd" id="1_lmwoo"]
@@ -9,9 +9,11 @@
 [ext_resource type="Script" path="res://Assets/Scripts/States/Gubble/fall.gd" id="7_eytsm"]
 [ext_resource type="Script" path="res://Assets/Scripts/States/Gubble/slam.gd" id="8_hjyoq"]
 [ext_resource type="Script" path="res://Assets/Scripts/States/Gubble/transition.gd" id="9_sqyxf"]
+[ext_resource type="Script" path="res://Assets/Scripts/States/Gubble/want_jump.gd" id="10_lhkbl"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yp7ca"]
 bounce = 0.3
+absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eqh5i"]
 radius = 6.0
@@ -175,3 +177,6 @@ script = ExtResource("8_hjyoq")
 
 [node name="transition" type="Node" parent="StateMachine"]
 script = ExtResource("9_sqyxf")
+
+[node name="want_jump" type="Node" parent="StateMachine"]
+script = ExtResource("10_lhkbl")
