@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://daat1o1xgqs7f" path="res://icon.svg" id="2_sxbls"]
 [ext_resource type="FontFile" uid="uid://cboapoje3hcce" path="res://Assets/Fonts/Kenney Future.ttf" id="3_1uplh"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_midq2"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3v5w7"]
 radius = 60.208
 
 [node name="ball" type="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
 collision_mask = 2
+floor_stop_on_slope = false
 script = ExtResource("1_qjygi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,7 +20,9 @@ texture = ExtResource("2_sxbls")
 zoom = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_midq2")
+position = Vector2(-7.15256e-06, 7.15256e-06)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_3v5w7")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -95.0

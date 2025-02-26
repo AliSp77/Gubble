@@ -53,7 +53,7 @@ func floor_finder(detector: ShapeCast2D) -> bool:
 	var floor_index = -1
 	for x in range(detector.get_collision_count()):
 		var ci = detector.get_collision_normal(x)
-		
+		print(detector.get_collision)
 		if ci.dot(Vector2(0, -1)) > 0.6:
 			found_floor = true
 			floor_index = x
