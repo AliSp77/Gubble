@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfs2fa8llv3na"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/ball.gd" id="1_qjygi"]
+[ext_resource type="Script" uid="uid://cl6klbefy0ijb" path="res://Assets/Scripts/ball.gd" id="1_qjygi"]
 [ext_resource type="Texture2D" uid="uid://daat1o1xgqs7f" path="res://icon.svg" id="2_sxbls"]
 [ext_resource type="FontFile" uid="uid://cboapoje3hcce" path="res://Assets/Fonts/Kenney Future.ttf" id="3_1uplh"]
 
@@ -9,8 +9,9 @@ radius = 60.208
 
 [node name="ball" type="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
-collision_mask = 2
+collision_mask = 10
 floor_stop_on_slope = false
+floor_snap_length = 2.0
 script = ExtResource("1_qjygi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -21,7 +22,6 @@ zoom = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.15256e-06, 7.15256e-06)
-scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_3v5w7")
 
 [node name="Label" type="Label" parent="."]

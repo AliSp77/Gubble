@@ -1,16 +1,16 @@
 [gd_scene load_steps=20 format=3 uid="uid://hbbfrd2uq3ru"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/player_ball.gd" id="1_2l1lp"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/state_machine.gd" id="2_6c41g"]
+[ext_resource type="Script" uid="uid://dmrr6gxkt8hx0" path="res://Assets/Scripts/player_ball.gd" id="1_2l1lp"]
+[ext_resource type="Script" uid="uid://i5budq4f4o2q" path="res://Assets/Scripts/States/player_ball/state_machine.gd" id="2_6c41g"]
 [ext_resource type="Texture2D" uid="uid://bka5ofrl2kifx" path="res://Assets/Sprites/ball.png" id="2_jbe77"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/idle.gd" id="3_jxwwc"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/walk.gd" id="4_i4u2q"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/player_ball/jump.gd" id="5_qnht2"]
-[ext_resource type="Script" path="res://Assets/Scenes/Character/fall.gd" id="7_x6o56"]
-[ext_resource type="Script" path="res://Assets/Scenes/Character/slam.gd" id="8_3inho"]
-[ext_resource type="Script" path="res://Assets/Scenes/Character/transition.gd" id="9_1ctkp"]
-[ext_resource type="Script" path="res://Assets/Scenes/Character/pid.gd" id="10_144ux"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/Gubble/want_jump.gd" id="10_j3jeg"]
+[ext_resource type="Script" uid="uid://cx6t16au6yvya" path="res://Assets/Scripts/States/player_ball/idle.gd" id="3_jxwwc"]
+[ext_resource type="Script" uid="uid://sa1qh11yillw" path="res://Assets/Scripts/States/player_ball/walk.gd" id="4_i4u2q"]
+[ext_resource type="Script" uid="uid://mgurprmyt38s" path="res://Assets/Scripts/States/player_ball/jump.gd" id="5_qnht2"]
+[ext_resource type="Script" uid="uid://cbn3m1yvdqcuk" path="res://Assets/Scenes/Character/fall.gd" id="7_x6o56"]
+[ext_resource type="Script" uid="uid://bhw7upwwnwb32" path="res://Assets/Scenes/Character/slam.gd" id="8_3inho"]
+[ext_resource type="Script" uid="uid://8k7te6sqmsuq" path="res://Assets/Scenes/Character/transition.gd" id="9_1ctkp"]
+[ext_resource type="Script" uid="uid://cnwapnehan4pb" path="res://Assets/Scenes/Character/pid.gd" id="10_144ux"]
+[ext_resource type="Script" uid="uid://cehj188mrhkyi" path="res://Assets/Scripts/States/Gubble/want_jump.gd" id="10_j3jeg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jp5n4"]
 bounce = 0.3
@@ -89,10 +89,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8b5ek"]
 _data = {
-"RESET": SubResource("Animation_swhd1"),
-"idle": SubResource("Animation_6hmtx"),
-"jump": SubResource("Animation_dpmrg"),
-"roll": SubResource("Animation_tsvdm")
+&"RESET": SubResource("Animation_swhd1"),
+&"idle": SubResource("Animation_6hmtx"),
+&"jump": SubResource("Animation_dpmrg"),
+&"roll": SubResource("Animation_tsvdm")
 }
 
 [node name="PlayerBall" type="RigidBody2D"]

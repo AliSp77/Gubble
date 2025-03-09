@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://pb5aaxq68b4b"]
+[gd_scene load_steps=9 format=3 uid="uid://pb5aaxq68b4b"]
 
 [ext_resource type="Texture2D" uid="uid://cyi3aioa63wwk" path="res://Assets/Sprites/roads2.png" id="1_wws2m"]
-[ext_resource type="Script" path="res://Assets/Scenes/Areas/world_boundires.gd" id="2_364fn"]
-[ext_resource type="PackedScene" uid="uid://b151whkabrw4a" path="res://Assets/Scenes/Character/rigid_ball_new_script/gubble.tscn" id="3_1p051"]
-[ext_resource type="Script" path="res://TileMapColliderGenerator-05ffa8eceb724194f2dda2331b8e1cd817581ada/generator.gd" id="3_np1w6"]
+[ext_resource type="Script" uid="uid://bquq30mmjr8cb" path="res://Assets/Scenes/Areas/world_boundires.gd" id="2_364fn"]
+[ext_resource type="Script" uid="uid://caysdo35flfvb" path="res://TileMapColliderGenerator-05ffa8eceb724194f2dda2331b8e1cd817581ada/generator.gd" id="3_np1w6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sq5nb"]
 texture = ExtResource("1_wws2m")
@@ -222,7 +221,3 @@ one_way_collision = true
 [node name="TMCG-CollisionPolygon2D-36" type="CollisionPolygon2D" parent="TileMapCollisionGenerator"]
 polygon = PackedVector2Array(2880, 120, 2912, 120, 2912, 128, 2880, 128, 2864, 120, 2864, 112)
 one_way_collision = true
-
-[node name="Gubble" parent="." instance=ExtResource("3_1p051")]
-position = Vector2(2213, 85)
-collision_mask = 10

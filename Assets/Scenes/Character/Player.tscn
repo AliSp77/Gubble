@@ -1,12 +1,12 @@
 [gd_scene load_steps=15 format=3 uid="uid://dqor3swdcidxu"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/player_controller.gd" id="1_bmq6t"]
+[ext_resource type="Script" uid="uid://b2pu6yxl5ulnn" path="res://Assets/Scripts/player_controller.gd" id="1_bmq6t"]
 [ext_resource type="Texture2D" uid="uid://d2twas6sbh6jg" path="res://Assets/Sprites/player.png" id="2_md08r"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/Player/player_state_machine.gd" id="3_heoeq"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/Player/idle.gd" id="4_o4dyc"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/Player/walk.gd" id="5_6cu52"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/Player/jump.gd" id="6_38xb1"]
-[ext_resource type="Script" path="res://Assets/Scripts/States/Player/fall.gd" id="7_uajbr"]
+[ext_resource type="Script" uid="uid://dm7hx84kesqm0" path="res://Assets/Scripts/States/Player/player_state_machine.gd" id="3_heoeq"]
+[ext_resource type="Script" uid="uid://dysrpd2vkcf0r" path="res://Assets/Scripts/States/Player/idle.gd" id="4_o4dyc"]
+[ext_resource type="Script" uid="uid://b40yu14rowehn" path="res://Assets/Scripts/States/Player/walk.gd" id="5_6cu52"]
+[ext_resource type="Script" uid="uid://cct2okshv0thu" path="res://Assets/Scripts/States/Player/jump.gd" id="6_38xb1"]
+[ext_resource type="Script" uid="uid://byhlvkmk1xmt3" path="res://Assets/Scripts/States/Player/fall.gd" id="7_uajbr"]
 
 [sub_resource type="Animation" id="Animation_i08xe"]
 length = 0.001
@@ -94,11 +94,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8yolh"]
 _data = {
-"RESET": SubResource("Animation_i08xe"),
-"fall": SubResource("Animation_j20s0"),
-"idle": SubResource("Animation_knhdm"),
-"jump": SubResource("Animation_1tgy4"),
-"walk": SubResource("Animation_iq6w8")
+&"RESET": SubResource("Animation_i08xe"),
+&"fall": SubResource("Animation_j20s0"),
+&"idle": SubResource("Animation_knhdm"),
+&"jump": SubResource("Animation_1tgy4"),
+&"walk": SubResource("Animation_iq6w8")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xqotm"]

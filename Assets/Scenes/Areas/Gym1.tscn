@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://hbbfrd2uq3ru" path="res://Assets/Scenes/Character/player_ball.tscn" id="1_ea8j3"]
 [ext_resource type="TileSet" uid="uid://hw3whtx1pd5y" path="res://Assets/Scenes/Areas/one_way_ground.tres" id="1_qsgce"]
-[ext_resource type="Script" path="res://TileMapColliderGenerator-05ffa8eceb724194f2dda2331b8e1cd817581ada/generator.gd" id="3_tliwe"]
+[ext_resource type="Script" uid="uid://caysdo35flfvb" path="res://TileMapColliderGenerator-05ffa8eceb724194f2dda2331b8e1cd817581ada/generator.gd" id="3_tliwe"]
 
 [node name="Gym1" type="Node2D"]
 

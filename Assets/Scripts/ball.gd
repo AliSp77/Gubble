@@ -38,12 +38,16 @@ func _physics_process(delta):
 
 	# Clamp velocity to max speed
 	velocity_x = clamp(velocity_x, -max_speed, max_speed)
-
+	
 	# Jump logic
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		jumping = true  # Track that we are now in the air
 	
+	var col_count := get_slide_collision_count()
+	print(col_count)
+	# if get_slide_collision_count:
+	# 	print(get_slide_collision(0).get_normal())
 	#if jumping and velocity.y == 0:
 		#jumping = false
 		#bouncing = true
@@ -54,9 +58,10 @@ func _physics_process(delta):
 		#bouncing = false  # Reset tracking
 	
 	# Apply velocity and move
-	print(velocity_x, " velocity x")
 	velocity.x = velocity_x
-
+	
+	# if collision_info:
+	# 	velocity = velocity.bounce(collision_info.get_normal())
 	#for i in get_slide_collision_count():
 		#var collision = get_slide_collision(i)
 		#print("Collided with: ", collision.get_collider().name)
